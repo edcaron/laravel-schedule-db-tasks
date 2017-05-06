@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableTasks1 extends Migration
+class CreateTableTasks extends Migration
 {
     /**
      * Run the migrations.
@@ -16,13 +16,15 @@ class CreateTableTasks1 extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->string('name', 200);
             $table->string('command', 500);
+            $table->boolean('active');
             $table->string('minute',2);
             $table->string('hour',2);
             $table->string('month',2);
             $table->string('day_of_month',2);
             $table->string('day_of_week',2);
-            $table->string('sendOutputTo', 200)->nullable();
+            $table->string('send_output_to', 200)->nullable();
         });
     }
 
