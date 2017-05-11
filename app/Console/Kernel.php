@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         //get all active tasks from db
+        /*
         $tasks = Task::where('active', 1)->get();
 
         foreach ($tasks as $task)
@@ -39,6 +40,7 @@ class Kernel extends ConsoleKernel
                                 $task->month            . ' ' .
                                 $task->day_of_week);
         }
+        */
 
     }
 

@@ -46,6 +46,40 @@
                         &nbsp;
                     </ul>
 
+                    <ul class="nav navbar-nav">
+                        <li><a href="{{ url('/home') }}">Início</a></li>
+                    </ul>
+
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tarefas<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('tasks.index') }}">Tarefas - Lista</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('tasks.create') }}">Tarefas - Nova Tarefa</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Usuários<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('users.index') }}">Usuários - Lista</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('users.create') }}">Usuários - Nova Tarefa</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -83,5 +117,46 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+
+    <script>
+        function showConfirmDeleteDialog(link) {
+            swal({
+                title: "Deseja apagar o registro?",
+                text: "A ação não poderá ser desfeita",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Apagar",
+                cancelButtonText: "Cancelar",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            },
+            function(isConfirm)
+            {
+                if (isConfirm)
+                {
+                    window.location.assign(link);
+                }
+                else
+                {
+                }
+            });
+        }
+    </script>
+
+    <!-- SweetAlerts -->
+    <script src="/js/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/sweetalert.css">
+
+    <!-- Datatables -->
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <link href="https://cdn.datatables.net/responsive/2.1.0/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js"></script>
+
+    @yield('scripts')
+
 </body>
 </html>
